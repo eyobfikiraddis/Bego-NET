@@ -15,13 +15,9 @@ This project is a Java-based charity management system that facilitates the inte
    - Validate donations from potential donors and add them to the donor database upon approval.
 4. **User Authentication**:
    - Secure admin login functionality.
-5. **API Endpoints**:
-   - `/api/donors`: Retrieve donor information.
-   - `/api/items`: Retrieve donated item information.
-   - `/api/donations`: Retrieve potential donor details.
-
+   
 ## Technology Stack
-- **Programming Language**: Java
+- **Programming Language**: Java, Javascript
 - **Framework**: Javalin (Web Framework)
 - **Database**: MongoDB
 - **Build Tool**: Maven
@@ -36,7 +32,7 @@ This project is a Java-based charity management system that facilitates the inte
 1. Clone this repository:
    ```bash
    git clone <repository-url>
-   cd charity-management-system
+   cd Begonet
    ```
 
 2. Install dependencies using Maven:
@@ -68,14 +64,14 @@ A charity management system developed by 3rd year students of Electrical and com
 
 ## Group Members
 
-| Group Members   | ID          |
-|-----------------|-------------|
-| BETEL YOHANNES  | UGR/2915/15 |
-| EYOB FIKIRADDIS | UGR/8200/15 |
-| EYUEL ENGIDA    | UGR/6642/15 |
-| LEOUL TEFERI    | UGR/8372/15 |
-| MISGANA MESSAY  | UGR/1524/15 |
-| SEKINA NESRIE   | UGR/4634/15 |
+| Group Members       | ID            |
+|---------------------|---------------|
+| BETEL YOHANNES      | UGR/2915/15   |
+| EYOB FIKIRADDIS     | UGR/8200/15   |
+| EYUEL ENGIDA        | UGR/6642/15   |
+| LEOUL TEFERI        | UGR/8372/15   |
+| MISGANA MESSAY      | UGR/1524/15   |
+| SEKINA NESRIE       | UGR/4634/15   |
 
 ---
 Developed by the በጎNet team.
