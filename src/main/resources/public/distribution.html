@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribution Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .card-header {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .btn-match {
+      background: linear-gradient(45deg, #2ecc71, #3498db);
+      color: white;
+      border: none;
+    }
+
+    .btn-match:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center my-4">Distribution Management</h1>
+    <p class="text-center">Match donations from senders to registered receivers.</p>
+
+    <!-- Pending Donations -->
+    <div class="mb-5">
+      <h3 class="text-center mb-3">Pending Donations</h3>
+      <div id="donationList" class="list-group">
+        <!-- Example Donation -->
+        <div class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h5>Food Donation</h5>
+              <p>Donor: John Doe<br>Contact: john.doe@example.com</p>
+            </div>
+            <button class="btn btn-primary btn-sm btn-match" data-id="donation1">Match with Receiver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registered Receivers -->
+    <div>
+      <h3 class="text-center mb-3">Registered Receivers</h3>
+      <div id="receiverList" class="list-group">
+        <!-- Example Receiver -->
+        <div class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h5>Jane Smith</h5>
+              <p>Needs: Food<br>Contact: jane.smith@example.com</p>
+            </div>
+            <button class="btn btn-primary btn-sm btn-match" data-id="receiver1">Match with Donation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Example data (Replace with backend API)
+    const donations = [
+      { id: 'donation1', type: 'Food', donor: 'John Doe', contact: 'john.doe@example.com' },
+      { id: 'donation2', type: 'Clothing', donor: 'Alice Green', contact: 'alice.green@example.com' },
+    ];
+
+    const receivers = [
+      { id: 'receiver1', name: 'Jane Smith', need: 'Food', contact: 'jane.smith@example.com' },
+      { id: 'receiver2', name: 'Tom Brown', need: 'Clothing', contact: 'tom.brown@example.com' },
+    ];
+
+    // Populate lists
+    const donationList = document.getElementById('donationList');
+    const receiverList = document.getElementById('receiverList');
+
+    donations.forEach(donation => {
+      const item = document.createElement('div');
+      item.className = 'list-group-item';
+      item.innerHTML = `
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5>${donation.type} Donation</h5>
+            <p>Donor: ${donation.donor}<br>Contact: ${donation.contact}</p>
+          </div>
+          <button class="btn btn-primary btn-sm btn-match" data-id="${donation.id}">Match with Receiver</button>
+        </div>
+      `;
+      donationList.appendChild(item);
+    });
+
+    receivers.forEach(receiver => {
+      const item = document.createElement('div');
+      item.className = 'list-group-item';
+      item.innerHTML = `
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5>${receiver.name}</h5>
+            <p>Needs: ${receiver.need}<br>Contact: ${receiver.contact}</p>
+          </div>
+          <button class="btn btn-primary btn-sm btn-match" data-id="${receiver.id}">Match with Donation</button>
+        </div>
+      `;
+      receiverList.appendChild(item);
+    });
+
+    // Handle match button clicks
+    document.addEventListener('click', function (event) {
+      if (event.target.classList.contains('btn-match')) {
+        const id = event.target.dataset.id;
+        alert(`Matched item with ID: ${id}`);
+        // Perform match operation (send data to backend)
+      }
+    });
+  </script>
+</body>
+
+</html>

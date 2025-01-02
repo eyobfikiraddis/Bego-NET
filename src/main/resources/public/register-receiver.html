@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Receiver</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .form-control:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #3498db, #2ecc71);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1 class="text-center my-4">Register Receiver</h1>
+  <p class="text-center">Please fill out the form to register individuals who need donations.</p>
+  <div class="card p-4 shadow">
+    <form id="registerReceiverForm">
+      <div class="mb-3">
+        <label for="receiverName" class="form-label">Name</label>
+        <input type="text" id="receiverName" class="form-control" placeholder="Enter receiver's name" required>
+      </div>
+      <div class="mb-3">
+        <label for="receiverAge" class="form-label">Age</label>
+        <input type="number" id="receiverAge" class="form-control" placeholder="Enter receiver's age" required min="0">
+      </div>
+      <div class="mb-3">
+        <label for="receiverPhone" class="form-label">Phone</label>
+        <input type="tel" id="receiverPhone" class="form-control" placeholder="Enter receiver's phone number" required>
+      </div>
+      <div class="mb-3">
+        <label for="receiverAddress" class="form-label">Address</label>
+        <textarea id="receiverAddress" class="form-control" placeholder="Enter receiver's address" rows="3" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="receiverOccupation" class="form-label">Occupation</label>
+        <input type="text" id="receiverOccupation" class="form-control" placeholder="Enter receiver's occupation" required>
+      </div>
+      <div class="mb-3">
+        <label for="monthlyIncome" class="form-label">Monthly Income</label>
+        <input type="number" id="monthlyIncome" class="form-control" placeholder="Enter receiver's monthly income" required min="0">
+      </div>
+      <div class="mb-3">
+        <label for="accountNumber" class="form-label">Account Number</label>
+        <input type="text" id="accountNumber" class="form-control" placeholder="Enter receiver's account number" required>
+      </div>
+      <div class="mb-3">
+        <label for="familySize" class="form-label">Family Size</label>
+        <input type="number" id="familySize" class="form-control" placeholder="Enter receiver's family size" required min="1">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary w-100">Register Receiver</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('registerReceiverForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Create popup modal content
+    const modalContent = `
+      <div class="modal" tabindex="-1" id="successModal" style="display: block; background: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Success</h5>
+              <button type="button" class="btn-close" id="closeModal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Receiver registered successfully!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="closeModalBtn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Append modal to body
+    document.body.insertAdjacentHTML('beforeend', modalContent);
+
+    // Add event listeners to close the modal
+    document.getElementById('closeModal').addEventListener('click', function () {
+      document.getElementById('successModal').remove();
+    });
+
+    document.getElementById('closeModalBtn').addEventListener('click', function () {
+      document.getElementById('successModal').remove();
+    });
+
+    // Clear form
+    this.reset();
+  });
+</script>
+</body>
+
+</html>
