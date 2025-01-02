@@ -1,5 +1,5 @@
 package org.example;
-
+import io.github.cdimascio.dotenv.Dotenv;
 import com.mongodb.client.*;
 import org.bson.Document;
 import io.javalin.Javalin;
@@ -10,11 +10,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class App {
-    private static final String mongoUrl = "mongodb+srv://begonet:oopproject%402024@cluster0.6bghu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
     private static MongoClient mongoClient;
     private static MongoDatabase database;
-
     public static void main(String[] args) {
+        Dotenv dotenv = Dotenv.load(); // Loads .env file
+        String mongodb = dotenv.get("MONGODB");
+        String eyo = dotenv.get("EYOB");
+        String s = dotenv.get("SEKINA");
+        String m = dotenv.get("MISGANA");
+        String ey = dotenv.get("EYUEL");
+        String l = dotenv.get("LEUL");
+        String b = dotenv.get("BETEL");
+
+
+        String mongoUrl = "mongodb+srv://begonet:" + mongodb+ "@cluster0.6bghu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+        System.out.println("Database Host: " + mongodb);
+//      String dbPort = dotenv.get("DB_PORT");
         mongoClient = MongoClients.create(mongoUrl);
         database = mongoClient.getDatabase("begonetdb");
 
@@ -147,12 +159,12 @@ public class App {
 
 
         HashMap<String, String> userCredentials = new HashMap<>() {{
-            put("eyob", "e#y#o#b#");
-            put("sekina", "oopproject2024");
-            put("misgana", "misgana");
-            put("eyuel", "eul_zzz");
-            put("betel", "ben_2122");
-            put("leoul", "llll_3434");
+            put("eyob", eyo);
+            put("sekina", s);
+            put("misgana", m);
+            put("eyuel", ey);
+            put("betel", b);
+            put("leoul", l);
         }};
 
         // Login endpoint
